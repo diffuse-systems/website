@@ -1,0 +1,48 @@
+name: Publish
+
+# The marketing site has no build step: it is HTML, CSS, one JavaScript file
+# and eight self-hosted fonts. The repository root is what goes online, so the
+# artifact is the checkout itself minus the repository's own plumbing.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One publish at a time, and let a newer push wait rather than cancel: a
+# half-finished deployment is worse than a slightly stale one.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Stage the site
+        run: |
+          mkdir -p _site
+          # Everything except the git metadata and the workflow that builds it.
+          rsync -a --exclude '.git' --exclude '.github' ./ _site/
+          # Artifact deployments do not run Jekyll, so this is belt and
+          # braces rather than a fix, and it costs nothing.
+          touch _site/.nojekyll
+          test -f _site/CNAME
+          test -f _site/index.html
+          test -f _site/assets/fonts/tw-Bold.woff2
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deploy
+        uses: actions/deploy-pages@v4

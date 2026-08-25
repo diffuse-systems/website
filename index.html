@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>document.documentElement.className+=" js"</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diffuse Systems | Your models, your machines</title>
+<meta name="description" content="Run, fine-tune and distil language models on the hardware you already own. Nothing leaves the deployment.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<div class="ground" aria-hidden="true"><canvas></canvas></div>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="/">
+      <img src="assets/mark.png" alt="">
+      <span>Diffuse Systems</span>
+    </a>
+    <div class="nav__links">
+      <a href="/" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <a href="https://docs.diffuse-systems.com">Docs</a>
+      <a href="why.html">Why Diffuse</a>
+      <a href="download.html">Download</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero__flow" aria-hidden="true"><canvas></canvas></div>
+
+  <div class="hero__inner">
+    <div class="hero__text">
+      <p class="eyebrow">Diffuse Enterprise</p>
+      <h1>Run frontier-class models<br>on hardware <em>that answers to you</em></h1>
+      <p class="hero__lede">
+        Idle workstations, GPU instances in your own cloud account, or one
+        desktop box with 128 GB of unified memory. The machines are yours, the
+        weights are yours, and nothing is metered by anybody else.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="https://docs.diffuse-systems.com/enterprise/introduction">Read the documentation <span class="btn__arrow">&rarr;</span></a>
+        <a class="btn btn--ghost" href="download.html">Download</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="hero__meta">
+  <span>On premises</span>
+  <span>No telemetry</span>
+  <span>Air-gapped by design</span>
+  <span>GDPR conformant</span>
+</div>
+
+<section class="tiles" aria-label="What it does">
+  <a class="tile reveal" href="https://docs.diffuse-systems.com/enterprise/serving">
+    <div class="tile__art">
+      <div class="viz viz-pipe">
+        <div class="viz-pipe__node">0..11</div>
+        <div class="viz-pipe__link"></div>
+        <div class="viz-pipe__node">12..23</div>
+        <div class="viz-pipe__link"></div>
+        <div class="viz-pipe__node">24..35</div>
+      </div>
+    </div>
+    <div class="tile__body">
+      <p class="tile__k">Inference</p>
+      <h3>Serve</h3>
+      <p>An OpenAI-compatible endpoint on your own hardware. One machine when the model fits, several when it does not.</p>
+      <span class="btn btn--outline btn--sm">How serving works <span class="btn__arrow">&rarr;</span></span>
+    </div>
+  </a>
+
+  <a class="tile tile--blue reveal" data-delay="90" href="https://docs.diffuse-systems.com/enterprise/fine-tuning">
+    <div class="tile__art">
+      <div class="viz viz-loss">
+        <svg viewBox="0 0 300 110" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="lossFill" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#7aa2ff" stop-opacity="0.28"/>
+              <stop offset="100%" stop-color="#7aa2ff" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <line class="grid" x1="0" y1="28" x2="300" y2="28"/>
+          <line class="grid" x1="0" y1="62" x2="300" y2="62"/>
+          <line class="grid" x1="0" y1="96" x2="300" y2="96"/>
+          <path class="area" d="M0,12 C60,30 90,72 140,86 C200,102 250,100 300,102 L300,110 L0,110 Z"/>
+          <path class="line" d="M0,12 C60,30 90,72 140,86 C200,102 250,100 300,102"/>
+        </svg>
+      </div>
+    </div>
+    <div class="tile__body">
+      <p class="tile__k">Training</p>
+      <h3>Fine-tune</h3>
+      <p>LoRA adapters trained on your own corpus, in two commands, with provenance attached to every one.</p>
+      <span class="btn btn--outline btn--sm">How fine-tuning works <span class="btn__arrow">&rarr;</span></span>
+    </div>
+  </a>
+
+  <a class="tile tile--warm reveal" data-delay="180" href="https://docs.diffuse-systems.com/enterprise/distillation">
+    <div class="tile__art">
+      <div class="viz viz-distil">
+        <div class="viz-distil__box big"><b>70B</b>teacher</div>
+        <div class="viz-distil__flow"></div>
+        <div class="viz-distil__box small"><b>8B</b>student</div>
+      </div>
+    </div>
+    <div class="tile__body">
+      <p class="tile__k">Compression</p>
+      <h3>Distil</h3>
+      <p>A large model teaches a small one on a corpus that needs no answers in it. You supply the questions.</p>
+      <span class="btn btn--outline btn--sm">How distillation works <span class="btn__arrow">&rarr;</span></span>
+    </div>
+  </a>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <div class="section__head center reveal">
+      <p class="eyebrow">Where it runs</p>
+      <h2>Your hardware, <em>wherever it is</em></h2>
+      <p class="section__lede">
+        On-premises is where this started and it was never the limit. What this
+        product requires is that the machines answer to you, not that they sit
+        in your building.
+      </p>
+    </div>
+
+    <div class="grid3">
+      <article class="panel reveal">
+        <p class="panel__k">The fleet you own</p>
+        <h3>Idle capacity, put to work</h3>
+        <p>
+          Workstations and lab machines that do nothing after six in the
+          evening become the pool that serves all night. Nothing was bought
+          for this.
+        </p>
+      </article>
+
+      <article class="panel panel--blue reveal" data-delay="90">
+        <p class="panel__k">Your own cloud</p>
+        <h3>Instances you control</h3>
+        <p>
+          GPU instances in your account, your network, your policy. Still your
+          infrastructure. <strong>You pay for a machine, not for tokens</strong>,
+          and the bill stops when you stop it.
+        </p>
+      </article>
+
+      <article class="panel panel--warm reveal" data-delay="180">
+        <p class="panel__k">One desktop box</p>
+        <h3>A 200B model on a desk</h3>
+        <p>
+          An AMD Ryzen AI Halo or an NVIDIA DGX Spark carries 128 GB of unified
+          memory in a compact case. One machine, one model, whole, for the
+          whole company.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <div class="section__head center reveal">
+      <p class="eyebrow">Supported technology</p>
+      <h2>It runs on what you <em>already run</em></h2>
+      <p class="section__lede">
+        Ordinary Linux machines, with or without accelerators. Nothing here is a
+        partnership or an endorsement: it is the list of platforms this software
+        has been installed on and answers requests from.
+      </p>
+    </div>
+  </div>
+
+  <div class="marks">
+    <div class="marks__row">
+      <div class="marks__track">
+      <div class="marks__group">
+        <div class="mk"><img src="assets/logos/debian.svg" alt="Debian" width="40" height="40" loading="lazy"><span>Debian</span></div>
+        <div class="mk"><img src="assets/logos/ubuntu.svg" alt="Ubuntu" width="40" height="40" loading="lazy"><span>Ubuntu</span></div>
+        <div class="mk"><img src="assets/logos/redhat.svg" alt="Red Hat" width="40" height="40" loading="lazy"><span>Red Hat</span></div>
+        <div class="mk"><img src="assets/logos/suse.svg" alt="SUSE" width="40" height="40" loading="lazy"><span>SUSE</span></div>
+        <div class="mk"><img src="assets/logos/fedora.svg" alt="Fedora" width="40" height="40" loading="lazy"><span>Fedora</span></div>
+        <div class="mk"><img src="assets/logos/archlinux.svg" alt="Arch Linux" width="40" height="40" loading="lazy"><span>Arch Linux</span></div>
+      </div>
+      <div class="marks__group" aria-hidden="true">
+        <div class="mk"><img src="assets/logos/debian.svg" alt="Debian" width="40" height="40" loading="lazy"><span>Debian</span></div>
+        <div class="mk"><img src="assets/logos/ubuntu.svg" alt="Ubuntu" width="40" height="40" loading="lazy"><span>Ubuntu</span></div>
+        <div class="mk"><img src="assets/logos/redhat.svg" alt="Red Hat" width="40" height="40" loading="lazy"><span>Red Hat</span></div>
+        <div class="mk"><img src="assets/logos/suse.svg" alt="SUSE" width="40" height="40" loading="lazy"><span>SUSE</span></div>
+        <div class="mk"><img src="assets/logos/fedora.svg" alt="Fedora" width="40" height="40" loading="lazy"><span>Fedora</span></div>
+        <div class="mk"><img src="assets/logos/archlinux.svg" alt="Arch Linux" width="40" height="40" loading="lazy"><span>Arch Linux</span></div>
+      </div>
+      </div>
+    </div>
+    <div class="marks__row marks__row--back">
+      <div class="marks__track">
+      <div class="marks__group">
+        <div class="mk"><img src="assets/logos/nvidia.svg" alt="NVIDIA" width="40" height="40" loading="lazy"><span>NVIDIA</span></div>
+        <div class="mk"><img src="assets/logos/intel.svg" alt="Intel" width="40" height="40" loading="lazy"><span>Intel</span></div>
+        <div class="mk"><img src="assets/logos/amd.svg" alt="AMD" width="40" height="40" loading="lazy"><span>AMD</span></div>
+        <div class="mk"><img src="assets/logos/googlecloud.svg" alt="Google Cloud" width="40" height="40" loading="lazy"><span>Google Cloud</span></div>
+        <div class="mk"><img src="assets/logos/proxmox.svg" alt="Proxmox" width="40" height="40" loading="lazy"><span>Proxmox</span></div>
+        <div class="mk"><img src="assets/logos/docker.svg" alt="Docker" width="40" height="40" loading="lazy"><span>Docker</span></div>
+        <div class="mk"><img src="assets/logos/kubernetes.svg" alt="Kubernetes" width="40" height="40" loading="lazy"><span>Kubernetes</span></div>
+      </div>
+      <div class="marks__group" aria-hidden="true">
+        <div class="mk"><img src="assets/logos/nvidia.svg" alt="NVIDIA" width="40" height="40" loading="lazy"><span>NVIDIA</span></div>
+        <div class="mk"><img src="assets/logos/intel.svg" alt="Intel" width="40" height="40" loading="lazy"><span>Intel</span></div>
+        <div class="mk"><img src="assets/logos/amd.svg" alt="AMD" width="40" height="40" loading="lazy"><span>AMD</span></div>
+        <div class="mk"><img src="assets/logos/googlecloud.svg" alt="Google Cloud" width="40" height="40" loading="lazy"><span>Google Cloud</span></div>
+        <div class="mk"><img src="assets/logos/proxmox.svg" alt="Proxmox" width="40" height="40" loading="lazy"><span>Proxmox</span></div>
+        <div class="mk"><img src="assets/logos/docker.svg" alt="Docker" width="40" height="40" loading="lazy"><span>Docker</span></div>
+        <div class="mk"><img src="assets/logos/kubernetes.svg" alt="Kubernetes" width="40" height="40" loading="lazy"><span>Kubernetes</span></div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell split reveal">
+    <div class="split__text">
+      <p class="eyebrow">Why on-premises</p>
+      <h2>Capable hardware, and data <em>that cannot leave</em></h2>
+      <p>
+        A university department has three hundred workstations that do nothing
+        after six in the evening. A hospital has a rack it is not allowed to
+        connect to the internet. Both are told the answer is a cloud cluster
+        rented by the hour.
+      </p>
+      <p>
+        This runs the models on their own machines instead. CPU, GPU or a mix,
+        several cooperating on one model when no single machine can hold it,
+        and no prompt, no document and no corpus crossing the boundary.
+      </p>
+    </div>
+    <div class="figure">
+      <pre><i># two commands on the machine that coordinates</i>
+sudo apt install ./diffuse-coordinator_1.0.0_amd64.deb
+sudo diffuse-coordinator licence set ./licence
+
+<i># two on every machine that computes</i>
+sudo apt install ./diffuse-node-agent_1.0.0_cpu_amd64.deb
+sudo diffuse-node-agent enroll --token <b>DFE1-...</b></pre>
+      <p class="figcap">No script to run. No wheel to place. Nothing fetched at install.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band band--alt">
+  <div class="shell split split--flip reveal">
+    <div class="split__text">
+      <p class="eyebrow">How it works</p>
+      <h2>Whole on one machine, or <em>split across several</em></h2>
+      <p>
+        If a model fits on one machine in the pool it runs there, whatever its
+        architecture. If it does not, the coordinator cuts it into slices, one
+        per machine, connected as a pipeline.
+      </p>
+      <p>
+        Splitting has conditions, and they are checked before anything is
+        downloaded rather than discovered afterwards. The documentation states
+        them precisely, including what is refused and why.
+      </p>
+      <p><a class="link" href="https://docs.diffuse-systems.com/enterprise/model-support">Model support in detail</a></p>
+    </div>
+    <div class="figure">
+      <pre>Serving qwen2.5-3b-instruct.
+
+  placement   whole, in RAM
+  reason      2.1 GB resident against 11.4 GB free
+  context     4096
+
+  slice 0   layers 0..36   <b>node-01</b>   2.1 GB   whole model</pre>
+      <p class="figcap">Placement says what it decided and why it decided it.</p>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="band band--alt">
+  <div class="shell split reveal">
+    <div class="split__text">
+      <p class="eyebrow">Built for audit</p>
+      <h2>Built for the question <em>an auditor will ask</em></h2>
+      <p>
+        Mutual TLS on every connection, with identity derived from the
+        certificate rather than from anything a machine claims about itself.
+        Roles, sessions and an append-only trail of who did what and what was
+        refused.
+      </p>
+      <p>
+        Customer content never reaches that trail. Not prompts, not completions,
+        not the rows of a training corpus. That is asserted by tests rather than
+        promised.
+      </p>
+    </div>
+    <div class="figure">
+      <pre><i># who did what, and what was refused</i>
+diffuse-coordinator audit --since 7d
+
+2026-08-23  alice   model.serve       <b>ok</b>
+2026-08-23  alice   apikey.create     <b>ok</b>
+2026-08-22  bob     node.revoke       <b>ok</b>
+2026-08-22  ci      model.pull    <i>refused</i>  no machine has 11.8 GB free</pre>
+      <p class="figcap">Refusals are recorded as deliberately as successes.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell split split--flip reveal">
+    <div class="split__text">
+      <p class="eyebrow">Reasons for Diffuse</p>
+      <h2>No activation. No heartbeat. <em>No telemetry.</em></h2>
+      <p>
+        There is no call home of any kind. The licence is verified against a key
+        already in the binary, on the machine, offline, for ever. An air-gapped
+        deployment is the design rather than a concession to one.
+      </p>
+      <p>
+        This website holds itself to the same rule: no third-party font, no
+        analytics, no tag manager, nothing embedded from anywhere else.
+      </p>
+    </div>
+    <div class="figure">
+      <pre><i># what this deployment is entitled to</i>
+diffuse-coordinator licence show
+
+  organisation  Universitätsklinikum Freiburg
+  edition       enterprise
+  nodes         <b>24</b>
+  expires       2027-06-30
+  features      training, distillation, fast-backend</pre>
+      <p class="figcap">Checked when a machine is enrolled, never per request.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <div class="section__head reveal">
+      <p class="eyebrow">What we measured</p>
+      <h2>What the arithmetic <em>actually says</em></h2>
+      <p class="section__lede">
+        Measured on this product rather than quoted from a paper. Where a figure
+        depends on hardware, it says so instead of pretending otherwise.
+      </p>
+    </div>
+    <div class="figures">
+      <div class="figure-card reveal">
+        <b><span data-count="176">0</span> MB</b>
+        <p><em>per training step</em> across four machines with LoRA, against 30.4 GB for a full fine-tune of the same model.</p>
+      </div>
+      <div class="figure-card reveal" data-delay="80">
+        <b><span data-count="16">0</span></b>
+        <p><em>models in the catalogue</em>, each from its publisher's own repository, each loaded and made to answer before it was written down.</p>
+      </div>
+      <div class="figure-card reveal" data-delay="160">
+        <b><span data-count="0">0</span></b>
+        <p><em>bytes of telemetry</em>. No activation, no licence heartbeat, no usage report, no font from a third party.</p>
+      </div>
+      <div class="figure-card reveal" data-delay="240">
+        <b><span data-count="2">0</span></b>
+        <p><em>commands to install</em> on the coordinator, and two on every machine that computes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <div class="section__head reveal">
+      <p class="eyebrow">Getting started</p>
+      <h2>From a bare machine to <em>an answer</em></h2>
+      <p class="section__lede">
+        Four steps, and none of them is a support call. Everything is installed
+        by the package manager and nothing is fetched when a node is given a
+        model.
+      </p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step__n">1</div>
+        <h3>Install</h3>
+        <p>One package on the machine that coordinates. It asks your organisation's name, generates the authority and starts.</p>
+        <code>apt install ./diffuse-coordinator…deb</code>
+      </div>
+      <div class="step reveal" data-delay="80">
+        <div class="step__n">2</div>
+        <h3>Enrol</h3>
+        <p>A token on every machine that computes. It writes an identity, starts the agent and waits to see it registered.</p>
+        <code>diffuse-node-agent enroll --token …</code>
+      </div>
+      <div class="step reveal" data-delay="160">
+        <div class="step__n">3</div>
+        <h3>Serve</h3>
+        <p>A name from the catalogue, or a file you already have. Placement says where it went and why.</p>
+        <code>diffuse-coordinator model run qwen2.5:3b</code>
+      </div>
+      <div class="step reveal" data-delay="240">
+        <div class="step__n">4</div>
+        <h3>Call it</h3>
+        <p>An OpenAI-compatible endpoint. Point an existing client at your host and give it your certificate.</p>
+        <code>POST /v1/chat/completions</code>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <div class="section__head reveal">
+      <p class="eyebrow">Reasons for Diffuse</p>
+      <h2>Against the <em>obvious answer</em></h2>
+      <p class="section__lede">
+        The usual reply to "we want to run a model" is an hourly GPU instance.
+        It is the right answer for a spike and a poor one for a department whose
+        machines are idle sixteen hours a day.
+      </p>
+    </div>
+    <div class="versus">
+      <div class="versus__col reveal">
+        <h3>A rented cluster</h3>
+        <ul>
+          <li><i>&minus;</i> Your prompts and your corpora leave the building.</li>
+          <li><i>&minus;</i> Per-token billing scales with curiosity, so people stop experimenting.</li>
+          <li><i>&minus;</i> A provider's policy change is your outage.</li>
+          <li><i>&minus;</i> The hardware you already own stays idle.</li>
+          <li><i>&minus;</i> "Where did this answer come from" has a long form.</li>
+        </ul>
+      </div>
+      <div class="versus__col versus__col--ours reveal" data-delay="90">
+        <h3>Diffuse Enterprise</h3>
+        <ul>
+          <li><i>+</i> Nothing leaves the deployment. There is no code that sends.</li>
+          <li><i>+</i> You pay for machines, not tokens, whether you own them or rent them.</li>
+          <li><i>+</i> A licence file, verified offline, with no activation call.</li>
+          <li><i>+</i> Four ordinary machines hold a model none could, or one card holds it whole.</li>
+          <li><i>+</i> Every action and every refusal on an append-only trail.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell">
+    <div class="section__head center reveal">
+      <p class="eyebrow">Common questions</p>
+      <h2>Questions we get <em>in the first meeting</em></h2>
+    </div>
+    <div class="faq">
+      <details class="reveal">
+        <summary>Do we need GPUs?</summary>
+        <p>No. A four-gigabyte model runs on an ordinary workstation with enough memory, and the CPU path is supported rather than tolerated. A card makes generation faster and lets one machine hold more.</p>
+      </details>
+      <details class="reveal" data-delay="60">
+        <summary>How many machines do we need?</summary>
+        <p>One, to start. Splitting a model across machines exists for models too large for any single one, and it is not the normal case.</p>
+      </details>
+      <details class="reveal" data-delay="120">
+        <summary>Does anything leave our network?</summary>
+        <p>No. No telemetry, no activation, no licence heartbeat and no usage report. The licence is verified against a key already in the binary, offline, for ever.</p>
+      </details>
+      <details class="reveal" data-delay="180">
+        <summary>What happens when the licence expires?</summary>
+        <p>Enrolling a new machine is refused. Nothing that is running stops and no request is interrupted. Software that stops working when a purchase order is late is software an operations team learns to fear.</p>
+      </details>
+      <details class="reveal" data-delay="240">
+        <summary>Can we fine-tune any model we serve?</summary>
+        <p>Fine-tuning needs the original safetensors weights, so a quantised file is refused at creation with the two ways to obtain trainable ones.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="shell reveal">
+    <p class="eyebrow">Next step</p>
+    <h2>Bring it to your <em>own hardware</em></h2>
+    <p>
+      Trials are thirty days on three machines, running exactly the software a
+      paying customer runs. Tell us what you have and we will tell you whether
+      it works before you install anything.
+    </p>
+    <div class="cta__actions">
+      <a class="btn btn--primary" href="contact.html">Start a trial <span class="btn__arrow">&rarr;</span></a>
+      <a class="btn btn--ghost" href="download.html">Download</a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="shell">
+    <div class="foot__grid">
+      <div class="foot__brand">
+        <span class="mark mark--lg"><img src="assets/mark.png" alt="Diffuse Systems"></span>
+        <div>
+          <p style="color:var(--text);font-family:'RC',sans-serif;font-weight:700;letter-spacing:.02em;text-transform:uppercase;margin:0">Diffuse Systems</p>
+          <p>Run, fine-tune and distil language models on the machines you already own.</p>
+        </div>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <a href="https://docs.diffuse-systems.com/enterprise/introduction">Introduction</a>
+        <a href="https://docs.diffuse-systems.com/enterprise/model-support">Model support</a>
+        <a href="https://docs.diffuse-systems.com/enterprise/deployment">Deployment</a>
+      </div>
+      <div>
+        <h4>Documentation</h4>
+        <a href="https://docs.diffuse-systems.com/enterprise/serving">Serving</a>
+        <a href="https://docs.diffuse-systems.com/enterprise/fine-tuning">Fine-tuning</a>
+        <a href="https://docs.diffuse-systems.com/enterprise/security">Security</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="why.html">Why Diffuse</a>
+        <a href="download.html">Download</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://docs.diffuse-systems.com/open/">Diffuse Open</a>
+      </div>
+    </div>
+    <div class="foot__bar">
+      <span>Copyright (c) 2026 Diffuse Systems. All rights reserved.</span>
+      <span>This site loads nothing from a third party.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

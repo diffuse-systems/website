@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>document.documentElement.className+=" js"</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Diffuse Enterprise | Diffuse Systems</title>
+<meta name="description" content="Why a dev-tool language model deployment fails an audit, and what we built instead.">
+<link rel="icon" type="image/png" href="assets/mark.png">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<div class="ground" aria-hidden="true"><canvas></canvas></div>
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="/">
+      <img src="assets/mark.png" alt="">
+      <span>Diffuse Systems</span>
+    </a>
+    <div class="nav__links">
+      <a href="/" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <a href="https://docs.diffuse-systems.com">Docs</a>
+      <a href="why.html" aria-current="page">Why Diffuse</a>
+      <a href="download.html">Download</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main class="page">
+  <div class="shell">
+    <div class="page__head reveal">
+      <p class="eyebrow">Why Diffuse Enterprise</p>
+      <h1>The deployment that <em>passes the audit</em></h1>
+      <p class="page__lede">
+        Most organisations already run a language model somewhere. Almost none
+        of them could survive being asked to prove who used it, on what, and
+        under whose authority.
+      </p>
+    </div>
+
+    <div class="grid3">
+      <article class="panel reveal">
+        <p class="panel__k">The usual state</p>
+        <p class="stat">Scattered</p>
+        <h3>A tool per team</h3>
+        <p>
+          A developer's inference server here, a notebook there, a container
+          somebody started in March. Nothing knows about anything else, and no
+          single question about the whole estate has an answer.
+        </p>
+      </article>
+      <article class="panel panel--blue reveal" data-delay="90">
+        <p class="panel__k">The consequence</p>
+        <p class="stat">Unprovable</p>
+        <h3>No trail to produce</h3>
+        <p>
+          When the auditor asks who ran what against which weights on the
+          fourteenth, the honest answer is that nobody recorded it, because
+          nothing in that stack was built to.
+        </p>
+      </article>
+      <article class="panel panel--warm reveal" data-delay="180">
+        <p class="panel__k">The outcome</p>
+        <p class="stat">Failed</p>
+        <h3>A finding, not a warning</h3>
+        <p>
+          For regulated and critical infrastructure this is not a remark in an
+          annexe. It is the control that was not implemented, and the project
+          stops until it is.
+        </p>
+      </article>
+    </div>
+  </div>
+
+  <div class="shell">
+    <div class="section__head reveal" style="margin-top:96px">
+      <p class="eyebrow">What goes wrong</p>
+      <h2>The dev-tool deployment, <em>examined</em></h2>
+      <p class="section__lede">
+        The tools that make a model easy to try are not the tools that make one
+        defensible to run. Each of these is ordinary, and each is a finding.
+      </p>
+    </div>
+
+    <div class="grid2">
+      <article class="panel reveal">
+        <p class="panel__k">Access</p>
+        <h3>An open port is an open door</h3>
+        <p>
+          The usual inference server binds a port and serves whoever reaches it.
+          Open it beyond the workstation and <strong>anyone on the network can
+          send requests</strong>: no token, no account, no identity, no limit.
+          The access control is the firewall rule, and firewall rules are edited
+          by people in a hurry.
+        </p>
+      </article>
+
+      <article class="panel panel--blue reveal" data-delay="80">
+        <p class="panel__k">Transport</p>
+        <h3>Plaintext across the estate</h3>
+        <p>
+          Prompts, documents and completions cross the network unencrypted
+          because the default was http and nobody changed it. In an environment
+          where transport encryption is a stated control, that single default
+          is the difference between a deployment and an incident.
+        </p>
+      </article>
+
+      <article class="panel panel--warm reveal" data-delay="160">
+        <p class="panel__k">Identity</p>
+        <h3>Nobody is anybody</h3>
+        <p>
+          There is no notion of who made a request. Not a certificate, not an
+          account, not a key. Attribution is impossible after the fact, which
+          means <strong>every question that begins "who" cannot be
+          answered</strong> at all.
+        </p>
+      </article>
+
+      <article class="panel reveal" data-delay="240">
+        <p class="panel__k">Audit</p>
+        <h3>Nothing is written down</h3>
+        <p>
+          No record of who deployed which weights, who revoked what, who was
+          refused and why. A log of crashes is not an audit trail, and
+          reconstructing one from three teams' shell histories is not evidence.
+        </p>
+      </article>
+
+      <article class="panel panel--blue reveal" data-delay="320">
+        <p class="panel__k">Governance</p>
+        <h3>No centre, so no control</h3>
+        <p>
+          Each team runs its own. Nobody can say how many models are running,
+          on what hardware, under which licences, with which data. A control you
+          cannot enumerate is a control you do not have.
+        </p>
+      </article>
+
+      <article class="panel panel--warm reveal" data-delay="400">
+        <p class="panel__k">Reach</p>
+        <h3>Available to the few</h3>
+        <p>
+          Because it is somebody's machine under somebody's desk, it serves that
+          team. The rest of the organisation either does without or starts a
+          second one, and now there are two of everything to not audit.
+        </p>
+      </article>
+    </div>
+  </div>
+
+  <div class="shell">
+    <div class="section__head reveal" style="margin-top:96px">
+      <p class="eyebrow">Reasons for Diffuse</p>
+      <h2>What we built <em>instead</em></h2>
+      <p class="section__lede">
+        Every line above has a counterpart that was designed rather than
+        retrofitted. This is the whole argument for this product.
+      </p>
+    </div>
+
+    <div class="grid2">
+      <article class="panel reveal">
+        <p class="panel__k">Access</p>
+        <h3>An identity, or nothing</h3>
+        <p>
+          Every connection between machines is mutually authenticated TLS 1.3.
+          There is no plaintext transport in any configuration, including
+          development defaults, and <strong>no flag that turns it off</strong>.
+          A machine's identity comes from its certificate, never from what it
+          claims in a request.
+        </p>
+      </article>
+
+      <article class="panel panel--blue reveal" data-delay="80">
+        <p class="panel__k">Applications</p>
+        <h3>Keys that expire and narrow</h3>
+        <p>
+          Application access is an API key, hashed at rest, shown once, with an
+          expiry and a scope. A reporting service gets a key that reaches one
+          model and stops working on a date you chose.
+        </p>
+      </article>
+
+      <article class="panel panel--warm reveal" data-delay="160">
+        <p class="panel__k">Audit</p>
+        <h3>Who did what, and what was refused</h3>
+        <p>
+          An append-only trail of every administrative action, with the actor
+          resolved from their certificate or session. <strong>Refusals are
+          recorded as deliberately as successes</strong>, because a trail that
+          holds only what worked cannot answer whether somebody tried.
+        </p>
+      </article>
+
+      <article class="panel reveal" data-delay="240">
+        <p class="panel__k">Confidentiality</p>
+        <h3>Customer content never reaches it</h3>
+        <p>
+          Not prompts, not completions, not the rows of a training corpus, not a
+          document's text. Asserted by tests that send a sentinel through a real
+          request and then search every column and both service logs for it.
+        </p>
+      </article>
+
+      <article class="panel panel--blue reveal" data-delay="320">
+        <p class="panel__k">Governance</p>
+        <h3>One centre that decides</h3>
+        <p>
+          One coordinator holds the identities, the entitlement, the placement
+          and the trail. Enumerating what runs where is one command, and roles
+          separate the people who deploy from the people who read the trail.
+        </p>
+      </article>
+
+      <article class="panel panel--warm reveal" data-delay="400">
+        <p class="panel__k">Reach</p>
+        <h3>Available to the organisation</h3>
+        <p>
+          One endpoint, OpenAI-compatible, that every team points at. Existing
+          clients work unchanged, and access is granted and withdrawn centrally
+          rather than by who knows which port.
+        </p>
+      </article>
+    </div>
+
+    <div class="prose reveal">
+      <div class="note">
+        <p>
+          None of this makes an audit pass by itself. What it does is make the
+          answers exist: the trail is there to produce, the identities are there
+          to enumerate, and the transport was never in question. That is the
+          difference between preparing for an audit and rebuilding for one.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="shell">
+    <div class="section__head center reveal" style="margin-top:96px">
+      <p class="eyebrow">Where it runs</p>
+      <h2>Your hardware, <em>wherever it is</em></h2>
+      <p class="section__lede">
+        On-premises is where this started and it is not the limit. What the
+        product requires is that the machines are yours to control, not that
+        they sit in your building.
+      </p>
+    </div>
+
+    <div class="grid3">
+      <article class="panel reveal">
+        <p class="panel__k">Option one</p>
+        <h3>The fleet you already own</h3>
+        <p>
+          Workstations and lab machines, idle after six. Capacity you already
+          pay for becomes capacity that serves.
+        </p>
+      </article>
+      <article class="panel panel--blue reveal" data-delay="90">
+        <p class="panel__k">Option two</p>
+        <h3>Your own cloud account</h3>
+        <p>
+          GPU instances in your account and your network. You pay for the
+          machine rather than for tokens, and nothing is metered by anybody
+          else.
+        </p>
+      </article>
+      <article class="panel panel--warm reveal" data-delay="180">
+        <p class="panel__k">Option three</p>
+        <h3>One box on a desk</h3>
+        <p>
+          An AMD Ryzen AI Halo or an NVIDIA DGX Spark: 128 GB of unified memory
+          in a compact, quiet case. One machine holds the model whole, for the
+          whole company. Splitting is the fallback, never the requirement.
+        </p>
+      </article>
+    </div>
+  </div>
+
+  <section class="cta">
+    <div class="shell reveal">
+      <p class="eyebrow">Next step</p>
+      <h2>Ask us the <em>hard question</em></h2>
+      <p>
+        Tell us what your auditor asked last time. If this product does not
+        answer it, we would rather say so now than after a pilot.
+      </p>
+      <div class="cta__actions">
+        <a class="btn btn--primary" href="contact.html">Talk to us <span class="btn__arrow">&rarr;</span></a>
+        <a class="btn btn--outline" href="https://docs.diffuse-systems.com/enterprise/why">Read the long version</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="shell">
+    <div class="foot__grid">
+      <div class="foot__brand">
+        <span class="mark mark--lg"><img src="assets/mark.png" alt="Diffuse Systems"></span>
+        <div>
+          <p style="color:var(--text);font-family:'RC',sans-serif;font-weight:700;letter-spacing:.02em;text-transform:uppercase;margin:0">Diffuse Systems</p>
+          <p>Run, fine-tune and distil language models on the machines you already own.</p>
+        </div>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <a href="https://docs.diffuse-systems.com/enterprise/introduction">Introduction</a>
+        <a href="https://docs.diffuse-systems.com/enterprise/model-support">Model support</a>
+        <a href="https://docs.diffuse-systems.com/enterprise/deployment">Deployment</a>
+      </div>
+      <div>
+        <h4>Documentation</h4>
+        <a href="https://docs.diffuse-systems.com/enterprise/serving">Serving</a>
+        <a href="https://docs.diffuse-systems.com/enterprise/fine-tuning">Fine-tuning</a>
+        <a href="https://docs.diffuse-systems.com/enterprise/security">Security</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="about.html">About</a>
+        <a href="download.html">Download</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://docs.diffuse-systems.com/open/">Diffuse Open</a>
+      </div>
+    </div>
+    <div class="foot__bar">
+      <span>Copyright (c) 2026 Diffuse Systems. All rights reserved.</span>
+      <span>This site loads nothing from a third party.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+</body>
+</html>
