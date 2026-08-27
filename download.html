@@ -100,12 +100,13 @@ sudo apt install ./diffuse-coordinator_amd64.deb</code></pre>
     <div class="grid3">
       <article class="panel reveal">
         <p class="panel__k">Requirement</p>
-        <p class="stat">2.36</p>
-        <h3>glibc floor</h3>
+        <p class="stat">Debian 12</p>
+        <h3>The supported platform</h3>
         <p>
-          Built in a Debian bookworm container, so the packages run on Debian 12
-          and newer and Ubuntu 22.04 LTS and newer. Building on current stable
-          would exclude every LTS in service.
+          Bookworm, exactly, on every machine that computes. The node agent's ML
+          wheels are built against python 3.11's ABI, so the package declines to
+          install on Debian 13 or on Ubuntu. Bundling a self-contained python
+          would lift that; it is not done.
         </p>
       </article>
       <article class="panel panel--blue reveal" data-delay="90">
