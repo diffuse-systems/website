@@ -48,7 +48,7 @@
           <h3>Coordinator</h3>
           <p>The machine that decides. Includes the API and the web console. 14 MB.</p>
         </div>
-        <span class="tag">Coming soon</span>
+        <a class="tag tag--go" href="https://github.com/diffuse-systems/releases/releases/latest/download/diffuse-coordinator_amd64.deb">Download .deb</a>
       </div>
       <div class="dl__row dl__row--blue reveal" data-delay="70">
         <span class="dl__n">02</span>
@@ -56,7 +56,7 @@
           <h3>Node agent, CPU</h3>
           <p>Every machine that computes. Carries both inference backends. 264 MB.</p>
         </div>
-        <span class="tag">Coming soon</span>
+        <a class="tag tag--go" href="https://github.com/diffuse-systems/releases/releases/latest/download/diffuse-node-agent_cpu_amd64.deb">Download .deb</a>
       </div>
       <div class="dl__row dl__row--blue reveal" data-delay="140">
         <span class="dl__n">03</span>
@@ -72,8 +72,23 @@
           <h3>Offline bundle</h3>
           <p>Both packages, the documents and the digests, in one archive. 551 MB.</p>
         </div>
-        <span class="tag">Coming soon</span>
+        <a class="tag tag--go" href="https://github.com/diffuse-systems/releases/releases/latest/download/diffuse-enterprise.tar.gz">Download archive</a>
       </div>
+    </div>
+
+    <div class="verify reveal">
+      <h3>Check what you downloaded, before you install it</h3>
+      <p>
+        Every release carries a <code>SHA256SUMS</code> file. These links always
+        point at the newest release and never change between versions.
+      </p>
+<pre><code>curl -fsSLO https://github.com/diffuse-systems/releases/releases/latest/download/diffuse-coordinator_amd64.deb
+curl -fsSLO https://github.com/diffuse-systems/releases/releases/latest/download/diffuse-node-agent_cpu_amd64.deb
+curl -fsSLO https://github.com/diffuse-systems/releases/releases/latest/download/SHA256SUMS
+
+sha256sum -c SHA256SUMS
+
+sudo apt install ./diffuse-coordinator_amd64.deb</code></pre>
     </div>
 
     <div class="grid3">

@@ -1141,6 +1141,36 @@ html.js .reveal.is-in { opacity: 1; transform: none; }
 
 a.tag:hover { color: #000; background: #fff; border-color: #fff; }
 
+/* A download link, as opposed to a "coming soon" label. It has to read as
+   something you can press: the rest of the tags on this page are captions. */
+.tag--go {
+  color: var(--accent);
+  border-color: rgba(53, 205, 240, 0.5);
+  background: rgba(53, 205, 240, 0.08);
+  text-decoration: none;
+}
+
+/* The verification block. Deliberately between the buttons and the
+   requirements: checking a download is part of installing it, not an appendix
+   somebody finds later. */
+.verify {
+  margin: 56px 0 0;
+  padding: 28px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.verify h3 { margin: 0 0 8px; font-size: 17px; }
+.verify p { margin: 0 0 18px; color: var(--text-3); font-size: 14px; max-width: 62ch; }
+.verify pre {
+  margin: 0;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--text-2);
+}
+.verify code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+
 @media (max-width: 900px) {
   .split, .grid3, .foot__grid { grid-template-columns: 1fr; gap: 40px; }
   .split--flip .split__text { order: 0; }
