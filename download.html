@@ -46,7 +46,7 @@
         <span class="dl__n">01</span>
         <div>
           <h3>Coordinator</h3>
-          <p>The machine that decides. Includes the API and the web console. 14 MB.</p>
+          <p>The machine that decides. Includes the API and the web console. 13 MB.</p>
         </div>
         <a class="tag tag--go" href="https://github.com/diffuse-systems/releases/releases/latest/download/diffuse-coordinator_amd64.deb">Download .deb</a>
       </div>
@@ -54,7 +54,7 @@
         <span class="dl__n">02</span>
         <div>
           <h3>Node agent, CPU</h3>
-          <p>Every machine that computes. Carries both inference backends. 264 MB.</p>
+          <p>Every machine that computes. Carries both inference backends. 263 MB.</p>
         </div>
         <a class="tag tag--go" href="https://github.com/diffuse-systems/releases/releases/latest/download/diffuse-node-agent_cpu_amd64.deb">Download .deb</a>
       </div>
@@ -70,7 +70,7 @@
         <span class="dl__n">04</span>
         <div>
           <h3>Offline bundle</h3>
-          <p>Both packages, the documents and the digests, in one archive. 551 MB.</p>
+          <p>Both packages, the documents and the digests, in one archive. 275 MB.</p>
         </div>
         <a class="tag tag--go" href="https://github.com/diffuse-systems/releases/releases/latest/download/diffuse-enterprise.tar.gz">Download archive</a>
       </div>
@@ -84,11 +84,17 @@
       </p>
 <pre><code>curl -fsSLO https://github.com/diffuse-systems/releases/releases/latest/download/diffuse-coordinator_amd64.deb
 curl -fsSLO https://github.com/diffuse-systems/releases/releases/latest/download/diffuse-node-agent_cpu_amd64.deb
+curl -fsSLO https://github.com/diffuse-systems/releases/releases/latest/download/diffuse-enterprise.tar.gz
 curl -fsSLO https://github.com/diffuse-systems/releases/releases/latest/download/SHA256SUMS
 
 sha256sum -c SHA256SUMS
 
 sudo apt install ./diffuse-coordinator_amd64.deb</code></pre>
+      <p class="verify__note">
+        <code>SHA256SUMS</code> covers exactly the three files above. Fetch only
+        the ones you need and <code>sha256sum --ignore-missing -c SHA256SUMS</code>
+        checks those.
+      </p>
     </div>
 
     <div class="grid3">

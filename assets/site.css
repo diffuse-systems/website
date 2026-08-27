@@ -1170,6 +1170,7 @@ a.tag:hover { color: #000; background: #fff; border-color: #fff; }
   color: var(--text-2);
 }
 .verify code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.verify__note { margin: 16px 0 0; font-size: 13px; color: var(--text-3); }
 
 @media (max-width: 900px) {
   .split, .grid3, .foot__grid { grid-template-columns: 1fr; gap: 40px; }
