@@ -108,6 +108,13 @@ sudo apt install ./diffuse-coordinator_amd64.deb</code></pre>
           install on Debian 13 or on Ubuntu. Bundling a self-contained python
           would lift that; it is not done.
         </p>
+        <p>
+          Those machines also need a CPU with <strong>AVX2</strong>, which means
+          Intel Haswell (2013) or AMD Excavator (2015) and newer. Some Pentium
+          and Celeron parts sold long after that have it switched off; the
+          package refuses to install on them and says which instruction is
+          missing.
+        </p>
       </article>
       <article class="panel panel--blue reveal" data-delay="90">
         <p class="panel__k">Requirement</p>
