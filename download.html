@@ -100,13 +100,14 @@ sudo apt install ./diffuse-coordinator_amd64.deb</code></pre>
     <div class="grid3">
       <article class="panel reveal">
         <p class="panel__k">Requirement</p>
-        <p class="stat">Debian 12</p>
+        <p class="stat">glibc 2.36</p>
         <h3>The supported platform</h3>
         <p>
-          Bookworm, exactly, on every machine that computes. The node agent's ML
-          wheels are built against python 3.11's ABI, so the package declines to
-          install on Debian 13 or on Ubuntu. Bundling a self-contained python
-          would lift that; it is not done.
+          Debian 12 and 13, Ubuntu 22.04 and 24.04, and any 64-bit Linux that
+          meets that floor. <strong>No Python is required</strong>: the node
+          agent carries its own interpreter, so it installs on a machine that
+          has none. Every release is installed on all four and serves a model
+          there.
         </p>
         <p>
           Those machines also need a CPU with <strong>AVX2</strong>, which means
