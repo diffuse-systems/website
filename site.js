@@ -116,7 +116,7 @@
     hero.querySelectorAll('.w, .rise').forEach(el => requestAnimationFrame(() => el.classList.add('in')));
   }
   const groups = ['.stack li', '.section-top', '.cards > *', '.editorial-grid > *', '.res-list > *', '.review-table > *',
-    '.package-list > *', '.resource-library > *', '.questions > *', '.report-feature', '.deploy-box', '.contact-in > *',
+    '.package-list > *', '.perf-grid > *', '.resource-library > *', '.questions > *', '.report-feature', '.deploy-box', '.contact-in > *',
     'main section:not(.hero):not(.inner-hero) h2', 'main section:not(.hero):not(.inner-hero) > .wrap > .eyebrow'];
   const seen = new Set();
   groups.forEach(selector => document.querySelectorAll(selector).forEach(el => {
