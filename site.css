@@ -88,3 +88,4 @@ main a.pkg-action:hover{background:#7d52e0;border-color:#7d52e0;color:#fff;trans
 .lang-switch a{color:inherit;padding:2px 3px;border-radius:4px;transition:color .2s}
 .lang-switch a:hover{color:#fff}
 .lang-switch a+a{margin-left:2px}
+.proof a{color:inherit;text-decoration:underline;text-decoration-color:rgba(255,255,255,.3);text-underline-offset:4px}.proof a:hover{color:#fff;text-decoration-color:currentColor}
