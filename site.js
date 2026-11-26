@@ -23,7 +23,7 @@
     if (other) location.replace(other.href + location.hash);
     return;
   }
-  notice.hidden = ['yes', 'no'].includes(read('ds_choice'));
+  notice.hidden = false;
   let returnToSettings = false;
   manage.addEventListener('click', () => {
     returnToSettings = true;
