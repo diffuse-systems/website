@@ -13,14 +13,14 @@
     } catch { /* The page remains usable if the browser blocks cookies. */ }
   };
   const url = new URL(location.href);
-  const forcedFrench = url.searchParams.get('lang') === 'fr';
-  if (forcedFrench) {
-    if (read('ds_choice') === 'yes') store('ds_lang', 'fr');
+  const forced = url.searchParams.get('lang');
+  if (forced) {
+    if (read('ds_choice') === 'yes') store('ds_lang', forced);
     url.searchParams.delete('lang');
     if (location.protocol !== 'file:') history.replaceState(null, '', url.pathname + url.search + url.hash);
-  } else if (lang === 'fr' && read('ds_choice') === 'yes' && read('ds_lang') === 'en' && (/\/(?:index\.html)?$/.test(location.pathname))) {
-    const english = document.querySelector('[data-lang="en"]');
-    if (english) location.replace(english.href + location.hash);
+  } else if (lang === 'en' && read('ds_choice') === 'yes' && read('ds_lang') === 'fr' && (/\/(?:index\.html)?$/.test(location.pathname))) {
+    const french = document.querySelector('[data-lang="fr"]');
+    if (french) location.replace(french.href + location.hash);
     return;
   }
   notice.hidden = ['yes', 'no'].includes(read('ds_choice'));
@@ -73,4 +73,62 @@
       event.preventDefault(); selectTab(tabs[move]); tabs[move].focus();
     });
   });
+})();
+
+(() => {
+  const root = document.documentElement;
+  if (!root.classList.contains('motion')) return;
+  const header = document.querySelector('header');
+  const onScroll = () => header && header.classList.toggle('scrolled', scrollY > 8);
+  addEventListener('scroll', onScroll, {passive: true}); onScroll();
+  const split = heading => {
+    let i = 0;
+    const walk = node => {
+      [...node.childNodes].forEach(child => {
+        if (child.nodeType === 3) {
+          const parts = child.textContent.split(/(\s+)/);
+          const frag = document.createDocumentFragment();
+          parts.forEach(part => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.append(document.createTextNode(part)); return; }
+            const word = document.createElement('span');
+            word.className = 'w'; word.textContent = part;
+            word.style.setProperty('--d', (i++ * 70) + 'ms');
+            frag.append(word);
+          });
+          child.replaceWith(frag);
+        } else if (child.nodeType === 1 && child.tagName !== 'BR') walk(child);
+      });
+    };
+    walk(heading);
+    return i;
+  };
+  const hero = document.querySelector('.hero, .inner-hero');
+  let after = 0;
+  if (hero) {
+    const title = hero.querySelector('h1');
+    if (title) after = split(title) * 70 + 150;
+    hero.querySelectorAll('.eyebrow, .lede, .hero-actions, .hero-art, .proof, .terminal-card').forEach(el => {
+      el.classList.add('rise');
+      const early = el.classList.contains('eyebrow');
+      el.style.setProperty('--d', (early ? 0 : after + (el.matches('.hero-art, .proof, .terminal-card') ? 120 : 0)) + 'ms');
+    });
+    hero.querySelectorAll('.w, .rise').forEach(el => requestAnimationFrame(() => el.classList.add('in')));
+  }
+  const groups = ['.stack li', '.section-top', '.cards > *', '.editorial-grid > *', '.res-list > *', '.review-table > *',
+    '.package-list > *', '.resource-library > *', '.questions > *', '.report-feature', '.deploy-box', '.contact-in > *',
+    'main section:not(.hero):not(.inner-hero) h2', 'main section:not(.hero):not(.inner-hero) > .wrap > .eyebrow'];
+  const seen = new Set();
+  groups.forEach(selector => document.querySelectorAll(selector).forEach(el => {
+    if (seen.has(el) || (hero && hero.contains(el))) return;
+    seen.add(el);
+    const siblings = [...el.parentElement.children].filter(s => s.matches(selector));
+    el.classList.add('rise');
+    el.style.setProperty('--d', Math.min(siblings.indexOf(el) * 90, 450) + 'ms');
+  }));
+  if (!('IntersectionObserver' in window)) { seen.forEach(el => el.classList.add('in')); return; }
+  const watch = new IntersectionObserver(entries => entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('in'); watch.unobserve(entry.target); }
+  }), {rootMargin: '0px 0px -8% 0px', threshold: 0.12});
+  seen.forEach(el => watch.observe(el));
 })();
