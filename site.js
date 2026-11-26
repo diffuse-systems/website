@@ -18,9 +18,9 @@
     if (read('ds_choice') === 'yes') store('ds_lang', forced);
     url.searchParams.delete('lang');
     if (location.protocol !== 'file:') history.replaceState(null, '', url.pathname + url.search + url.hash);
-  } else if (lang === 'en' && read('ds_choice') === 'yes' && read('ds_lang') === 'fr' && (/\/(?:index\.html)?$/.test(location.pathname))) {
-    const french = document.querySelector('[data-lang="fr"]');
-    if (french) location.replace(french.href + location.hash);
+  } else if (lang === 'en' && read('ds_choice') === 'yes' && ['fr', 'de'].includes(read('ds_lang')) && (/\/(?:index\.html)?$/.test(location.pathname))) {
+    const other = document.querySelector('[data-lang="' + read('ds_lang') + '"]');
+    if (other) location.replace(other.href + location.hash);
     return;
   }
   notice.hidden = ['yes', 'no'].includes(read('ds_choice'));

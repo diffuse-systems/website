@@ -85,3 +85,6 @@ main a.pkg-action:hover{background:#7d52e0;border-color:#7d52e0;color:#fff;trans
 .perf-bench i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--v);border-radius:99px;background:linear-gradient(90deg,#7c4dd8,#5ab8f0);transform-origin:left;transition:transform 1.2s var(--ease-out) .25s}
 .motion .perf-side.rise:not(.in) .perf-bench i::after{transform:scaleX(0)}
 @media (max-width:860px){.perf-grid{grid-template-columns:1fr}.perf-link{display:block;margin:14px 0 0}}
+.lang-switch a{color:inherit;padding:2px 3px;border-radius:4px;transition:color .2s}
+.lang-switch a:hover{color:#fff}
+.lang-switch a+a{margin-left:2px}
